@@ -1,0 +1,75 @@
+.imgo {
+    height: 150px;
+    position: absolute;
+    top: 0px;
+    right: 50vw;
+    left: 35vw;
+    offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
+    box-shadow: 1px 1px 3px #0008;
+    transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77, -1.17, .75, .84), box-shadow .3s, z-index .3s;
+    z-index: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .imgo {
+        left: 25vw;
+        height: 110px;
+    }
+}
+
+
+
+.imgo:hover {
+    transform: scale(2);
+    offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
+    box-shadow: 3px 4px 10px #0006;
+    z-index: 999;
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+}
+
+
+/* 5 images */
+.imgo:nth-last-child(5):first-child {
+    offset-distance: 0%;
+}
+
+.imgo:nth-last-child(4):nth-child(2) {
+    offset-distance: 25%;
+}
+
+.imgo:nth-last-child(3):nth-child(3) {
+    offset-distance: 50%;
+}
+
+.imgo:nth-last-child(2):nth-child(4) {
+    offset-distance: 75%;
+}
+
+.imgo:last-child:nth-child(5) {
+    offset-distance: 100%;
+}
+
+
+
+@media screen and (max-width: 800px) {
+    .imgo {
+        offset-path: path('M 0 0 L 50 -50 L 100 50 L 150 -50 L 200 50 L 250 -50 L 300 50 L 350 -50 L 400 50');
+        position: absolute;
+        left: 20vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .imgo {
+        offset-path: path('M 0 0 L 0 100 L 0 200 L 0 300 L 0 400');
+        offset-rotate: 50deg;
+    }
+
+    .imgo:hover {
+        offset-path: path('M 0 65 L 0 130 L 0 195 L 0 260 L 0 325');
+        offset-rotate: 0deg;
+    }
+}
