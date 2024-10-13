@@ -43,6 +43,11 @@ body {
     flex-direction: column;
     padding-left:130px;
     padding-top:40px;
+    @media screen and (max-width: 850px) {
+
+        padding-left: 30px;
+    }
+
 }
 
 .a_p1{
