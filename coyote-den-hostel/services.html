@@ -119,6 +119,11 @@
         <p style="color: #fcfaf5; font-weight: 600;">More Services</p>
     </section>
 
+    <div style="display: flex; flex-direction: column; justify-content: space-around; padding: 10px; gap: 10px; width: 100%; align-items: center;">
+        <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;" onclick="addService()">Add additional service</button>
+        <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;" onclick="removeService()">Remove last additional service</button>
+    </div>
+    
     <section class="h_services">
         <div class="service">
             <img src="loi.avif" alt="">
@@ -155,5 +160,7 @@
         </div>
 
      </footer>
+
+     <script src="services_script.js"></script>
 </body>
 </html>
