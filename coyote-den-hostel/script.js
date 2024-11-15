@@ -93,3 +93,38 @@ function toggleDetails(button, roomName, type, amenities, price) {
         detailsDiv.innerHTML = "";
     }
 }
+
+function changeBackground(button) {
+    // Get the parent article of the button
+    const parentArticle = button.closest("article");
+    
+    // Generate a random background color
+    const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    parentArticle.style.backgroundColor = randomColor;
+    
+    // Calculate a contrasting color for the text and button
+    const contrastingColor = getContrastingColor(randomColor);
+    parentArticle.style.color = contrastingColor;
+    
+    // Apply the contrasting color to all text and buttons inside the article
+    const buttons = parentArticle.querySelectorAll("button");
+    buttons.forEach(btn => {
+        btn.style.color = contrastingColor;
+        btn.style.borderColor = contrastingColor;
+    });
+}
+
+// Utility function to calculate a contrasting color
+function getContrastingColor(hexColor) {
+    // Convert hex color to RGB
+    const r = parseInt(hexColor.substring(1, 3), 16);
+    const g = parseInt(hexColor.substring(3, 5), 16);
+    const b = parseInt(hexColor.substring(5, 7), 16);
+    
+    // Calculate the luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    
+    // Return black for light colors and white for dark colors
+    return luminance > 0.5 ? "#000000" : "#FFFFFF";
+}
+

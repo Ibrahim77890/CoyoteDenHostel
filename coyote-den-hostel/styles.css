@@ -342,19 +342,6 @@ body {
     div button:hover {
         opacity: 80%;
         scale: 110%;
-
-        p {
-            transform: translateX(5px);
-            -webkit-transform: translateX(5px);
-            -moz-transform: translateX(5px);
-            -ms-transform: translateX(5px);
-            -o-transform: translateX(5px);
-            transition: transform 1s ease;
-            -moz-transition: transform 1s ease;
-            -ms-transition: transform 1s ease;
-            -o-transition: transform 1s ease;
-            -webkit-transition: transform 1s ease;
-        }
     }
 }
 
