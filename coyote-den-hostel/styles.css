@@ -26,15 +26,17 @@ body {
     height: 100vh;
     width: 100vw;
     color: var(--text-color);
+    background-color:#f1f1f1;
 }
 
 .h_parent {
     width: 100%; 
-    height: 100%;
-    background-color: #FCFAF5;
+    height: fit-content;
+    background-color:#f1f1f1;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow: hidden;
 }
 
 
@@ -420,7 +422,7 @@ body {
 
 /* Gallery section classes */
 .h_gallery {
-    height: 140vh;
+    height: fit-content;
     width: 100%;
     padding-top: 100px;
     padding-left: 30px;
@@ -431,7 +433,7 @@ body {
     align-items: center;
     background-color:#f1f1f1;
     font-family: var(--font-poppins);
-
+    overflow: auto;
     h1 {
         font-size: 48px;
     }
@@ -477,6 +479,7 @@ body {
     padding: 10px;
     flex-direction: row;
     align-items: center;
+    margin-top: 50px;
 }
 
 .h_footer_logo {
@@ -509,3 +512,86 @@ body {
     }
 }
 
+.carousel-container {
+    position: relative;
+    width: 600px;
+    overflow: hidden;
+    margin: auto;
+}
+
+@media screen and (max-width: 700px) {
+    .carousel-container{
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .carousel-container{
+        width: 300px;
+        height: 500px;
+    }
+}
+
+.imgi_gallery {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.imgi {
+    min-width: 100%; /* Make each image occupy the full width */
+    height: 250px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensure the image fits well */
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    z-index: 1000;
+    font-size: 18px;
+    border-radius: 50%;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.details {
+    width: 100%;
+    height: fit-content;
+    background-color: #A7D180;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border: 2px solid #DB6430;
+    gap: 5px;
+
+    img {
+        border: 2px solid #312F2F;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+}
+}
+
+.hidden {
+    display: none;
+}
