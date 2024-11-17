@@ -30,44 +30,72 @@ const nextBtn = document.querySelector(".next-btn");
 
 let index = 0;
 
+/**
+ * Updates the image carousel to display the image at the current index.
+ * Calculates the offset based on the current index and gallery width, 
+ * and applies a CSS transformation to shift the view.
+ */
 const updateCarousel = () => {
-    const width = gallery.clientWidth;
-    gallery.style.transform = `translateX(-${index * width}px)`;
+    const width = gallery.clientWidth; // Get the gallery width for dynamic resizing
+    gallery.style.transform = `translateX(-${index * width}px)`; // Shift the carousel
 };
 
+/**
+ * Handles the "Next" button click event.
+ * Moves to the next image in the carousel and loops back to the start when at the end.
+ * Updates the carousel view accordingly.
+ */
 nextBtn.addEventListener("click", () => {
-    const totalImages = document.querySelectorAll(".imgi").length;
-    index = (index + 1) % totalImages; // Loop back to the first image
+    const totalImages = document.querySelectorAll(".imgi").length; // Total images in the carousel
+    index = (index + 1) % totalImages; // Increment index with looping
     updateCarousel();
 });
 
+/**
+ * Handles the "Previous" button click event.
+ * Moves to the previous image in the carousel and loops to the last image when at the start.
+ * Updates the carousel view accordingly.
+ */
 prevBtn.addEventListener("click", () => {
-    const totalImages = document.querySelectorAll(".imgi").length;
-    index = (index - 1 + totalImages) % totalImages;
+    const totalImages = document.querySelectorAll(".imgi").length; // Total images in the carousel
+    index = (index - 1 + totalImages) % totalImages; // Decrement index with looping
     updateCarousel();
 });
 
+/**
+ * Recalculates the carousel layout on window resize for responsiveness.
+ * Ensures the current image stays centered after resizing.
+ */
 window.addEventListener("resize", updateCarousel);
 
 const detailsDivInitial = document.querySelector(".details");
 
 detailsDivInitial.classList.add("hidden");
 
+/**
+ * Toggles the display of room details in the `.details` section.
+ * - Updates the button text between "Show Details" and "Hide Details."
+ * - Populates or clears the `.details` section with the room's information and associated image.
+ * 
+ * @param {HTMLElement} button - The button triggering the toggle.
+ * @param {string} roomName - Name of the room to display details for.
+ * @param {string} type - Type of the room.
+ * @param {string} amenities - Amenities provided in the room.
+ * @param {string} price - Price of the room.
+ */
 function toggleDetails(button, roomName, type, amenities, price) {
-    // Select the details div
-    const detailsDiv = document.querySelector(".details");
-    detailsDiv.classList.remove("hidden");
+    const detailsDiv = document.querySelector(".details"); // Select the details section
+    detailsDiv.classList.remove("hidden"); // Ensure details are visible
 
-    // Check if details are currently visible
     if (button.textContent === "Show Details") {
-        // Update button text to "Hide Details"
+        // Reset all buttons to "Show Details"
         const buttonsDetails = document.querySelectorAll(".details-button");
         buttonsDetails.forEach((buttonElement) => {
             buttonElement.textContent = "Show Details";
         });
-        button.textContent = "Hide Details";
+        button.textContent = "Hide Details"; // Update clicked button's text
 
-        // Populate the details div with room details
+        // Map room names to their respective images
         const roomImages = {
             "Babusar Room": "room1.jpg",
             "Nagarparkar Room": "room2.jpg",
@@ -76,9 +104,9 @@ function toggleDetails(button, roomName, type, amenities, price) {
             "Kalash Dorm": "room5.jpg",
             "Quetta Dorm": "room5.jpg",
         };
-        const roomImage = roomImages[roomName];
-        detailsDiv.classList.remove("hidden");
+        const roomImage = roomImages[roomName]; // Get the image for the selected room
 
+        // Populate details section with room information
         detailsDiv.innerHTML = `
             <h2>Room Details</h2>
             <img src="${roomImage}" alt="${roomName}" style="width:100%; max-width:300px; margin-bottom:10px;">
@@ -88,33 +116,46 @@ function toggleDetails(button, roomName, type, amenities, price) {
             <p><strong>Price:</strong> ${price}</p>
         `;
     } else {
+        // Clear details section and reset button text
         button.textContent = "Show Details";
         detailsDiv.classList.add("hidden");
-        detailsDiv.innerHTML = "";
+        detailsDiv.innerHTML = ""; // Clear content
     }
 }
 
+/**
+ * Changes the background color of all sections and articles on the page.
+ * Adjusts text color for contrast to maintain readability.
+ * 
+ * @param {HTMLElement} button - The button triggering the background change.
+ */
 function changeBackground(button) {
-    // Get the parent article of the button
-    const parentArticle = button.closest("article");
-    
     // Generate a random background color
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-    parentArticle.style.backgroundColor = randomColor;
-    
-    // Calculate a contrasting color for the text and button
+
+    // Apply the background color to all sections and articles
+    const divs = document.querySelectorAll("section, article");
+    divs.forEach(div => {
+        div.style.backgroundColor = randomColor;
+    });
+
+    // Calculate a contrasting color for text
     const contrastingColor = getContrastingColor(randomColor);
-    parentArticle.style.color = contrastingColor;
-    
-    // Apply the contrasting color to all text and buttons inside the article
-    const buttons = parentArticle.querySelectorAll("button");
-    buttons.forEach(btn => {
-        btn.style.color = contrastingColor;
-        btn.style.borderColor = contrastingColor;
+
+    // Apply the contrasting color to all text elements (p, h1, h2)
+    const allTextElements = document.querySelectorAll("p,h1,h2");
+    allTextElements.forEach(element => {
+        element.style.color = contrastingColor;
     });
 }
 
-// Utility function to calculate a contrasting color
+/**
+ * Utility function to calculate a contrasting color.
+ * Ensures text is readable against a given background color by choosing either black or white.
+ * 
+ * @param {string} hexColor - The background color in hex format.
+ * @returns {string} - A contrasting color ("#000000" or "#FFFFFF").
+ */
 function getContrastingColor(hexColor) {
     // Convert hex color to RGB
     const r = parseInt(hexColor.substring(1, 3), 16);
@@ -127,4 +168,3 @@ function getContrastingColor(hexColor) {
     // Return black for light colors and white for dark colors
     return luminance > 0.5 ? "#000000" : "#FFFFFF";
 }
-
