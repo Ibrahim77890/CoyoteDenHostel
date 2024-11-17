@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,14 @@
     <link rel="stylesheet" href="images.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles-services.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Semantic header -->
     <header class="h_header">
@@ -28,6 +29,18 @@
             <li><a href="#">Services</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact_us.html">Contact</a></li>
+            <li style="text-decoration: none;">
+                Font Size:
+                <i class="fa fa-plus" aria-hidden="true" style="font-size: 1.2rem;" onclick="increaseFontSize()"></i>
+                <i class="fa fa-minus" aria-hidden="true" style="font-size: 1.2rem;" onclick="decreaseFontSize()"></i>
+            </li>
+            <li style="text-decoration: none; cursor:default;">Dark Mode:</li>
+            <li>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="toggle" onclick="toggleDarkMode(this)" />
+                    <label for="toggle"></label>
+                </div>
+            </li>
         </ul>
     </header>
 
@@ -36,19 +49,20 @@
             <h1>Services We Provide</h1>
         </div>
     </article>
-    
+
 
 
     <!-- Semantic Hero Section -->
     <section class="h_hero" style="margin-bottom: 5%;">
         <div class="h_hero_first_panel">
             <h1>Hostel vibes, traditional flair</h1>
-            <p style="padding-inline: 3%;">Feel at home in our rooms decorated with traditional art, textiles, and knicknacks from all over Pakistan.
-            Our Islamabad hostel has both private rooms and dorms at fair prices.</p>
+            <p style="padding-inline: 3%;">Feel at home in our rooms decorated with traditional art, textiles, and
+                knicknacks from all over Pakistan.
+                Our Islamabad hostel has both private rooms and dorms at fair prices.</p>
         </div>
 
         <div class="h_hero_second_panel">
-            <img src="room3.jpg" /> 
+            <img src="room3.jpg" />
         </div>
     </section>
 
@@ -62,7 +76,8 @@
             <div>
                 <p style="color: rgb(71, 188, 87);">PRIVATE (DOUBLE)</p>
                 <h2>William's Room</h2>
-                <p>A cozy and colorful private room on the rooftop with en-suite washroom. Includes easy access to the roof and lots of natural light. AC available for an additional fee.</p>
+                <p>A cozy and colorful private room on the rooftop with en-suite washroom. Includes easy access to the
+                    roof and lots of natural light. AC available for an additional fee.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -71,7 +86,8 @@
             <div>
                 <p style="color: rgb(71, 188, 87);">PRIVATE (DOUBLE)</p>
                 <h2>Nagarparkar Room</h2>
-                <p>A bright and cheery private room with en-suite bathroom. Has lots of colorful local touches, and access to a small, sunny balcony overlooking a park. Room is equipped with a dual AC-heater.</p>
+                <p>A bright and cheery private room with en-suite bathroom. Has lots of colorful local touches, and
+                    access to a small, sunny balcony overlooking a park. Room is equipped with a dual AC-heater.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -80,7 +96,8 @@
             <div>
                 <p style="color: rgb(71, 188, 87);">DORM (4 BEDS)</p>
                 <h2>Chitral Dorm</h2>
-                <p>A spacious dorm room with four beds, each with its own reading light and power outlet. The room has a large window and a view of the Margalla Hills. AC available for an additional fee.</p>
+                <p>A spacious dorm room with four beds, each with its own reading light and power outlet. The room has a
+                    large window and a view of the Margalla Hills. AC available for an additional fee.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -97,7 +114,8 @@
             <div>
                 <p style="color: rgb(71, 188, 87);">Harley Davidson</p>
                 <h2>2024 CVO™ Road Glide™ ST</h2>
-                <p>The CVO Road Glide ST isn’t the only new Harley-Davidson bagger, as The Motor Company has just taken the wraps off its 2024 Street Glide and Road Glide motorcycles.</p>
+                <p>The CVO Road Glide ST isn’t the only new Harley-Davidson bagger, as The Motor Company has just taken
+                    the wraps off its 2024 Street Glide and Road Glide motorcycles.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -111,25 +129,32 @@
             </div>
         </div>
         <div style="display: flex; justify-content: center;">
-            <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate;">Show More</button>
+            <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate;">Show
+                More</button>
         </div>
     </section>
-    
+
     <section class="h_contact" style="height: 6vh; padding: 1%; text-align: center;">
         <p style="color: #fcfaf5; font-weight: 600;">More Services</p>
     </section>
 
-    <div style="display: flex; flex-direction: column; justify-content: space-around; padding: 10px; gap: 10px; width: 100%; align-items: center;">
-        <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;" onclick="addService()">Add additional service</button>
-        <button style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;" onclick="removeService()">Remove last additional service</button>
+    <div
+        style="display: flex; flex-direction: column; justify-content: space-around; padding: 10px; gap: 10px; width: 100%; align-items: center;">
+        <button
+            style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;"
+            onclick="addService()">Add additional service</button>
+        <button
+            style="background-color: transparent; color: chocolate; border: 1px solid chocolate; padding: 10px; border-radius: 5px;"
+            onclick="removeService()">Remove last additional service</button>
     </div>
-    
+
     <section class="h_services">
         <div class="service">
             <img src="loi.avif" alt="">
             <div>
                 <h2>Letters of Invitation</h2>
-                <p>Need a letter of invitation for your Pakistan visa? We can provide letters from our government-approved tourism company for a fee.</p>
+                <p>Need a letter of invitation for your Pakistan visa? We can provide letters from our
+                    government-approved tourism company for a fee.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -137,7 +162,8 @@
             <img src="tours.avif" alt="">
             <div>
                 <h2>Private Tours</h2>
-                <p>Want a smoother trip in Pakistan? We also organize private tours throughout the country through our government-approved tour company, Coyote Trail.</p>
+                <p>Want a smoother trip in Pakistan? We also organize private tours throughout the country through our
+                    government-approved tour company, Coyote Trail.</p>
                 <button>Book Now</button>
             </div>
         </div>
@@ -159,8 +185,10 @@
             <p>© 2024 Coyote Den. All rights reserved.</p>
         </div>
 
-     </footer>
+    </footer>
 
-     <script src="services_script.js"></script>
+    <script src="services_script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

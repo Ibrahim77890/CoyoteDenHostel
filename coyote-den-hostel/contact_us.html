@@ -17,6 +17,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <title>Contact-Us</title>
 </head>
 
@@ -27,11 +28,23 @@
     </div>
 
     <ul class="h_header_nav_list">
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact_us.html">Contact</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact_us.html">Contact</a></li>
+      <li style="text-decoration: none;">
+        Font Size:
+        <i class="fa fa-plus" aria-hidden="true" style="font-size: 1.2rem;" onclick="increaseFontSize()"></i>
+        <i class="fa fa-minus" aria-hidden="true" style="font-size: 1.2rem;" onclick="decreaseFontSize()"></i>
+      </li>
+      <li style="text-decoration: none; cursor:default;">Dark Mode:</li>
+      <li>
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle" onclick="toggleDarkMode(this)" />
+          <label for="toggle"></label>
+        </div>
+      </li>
     </ul>
-</header>
+  </header>
   <div class="c_main_div">
     <div class="c_main_first_half">
       <h2 class="c_p_head">Get in Touch</h2>
@@ -58,9 +71,9 @@
     </div>
     <div class="c_main_second_half">
       <h2 class="c_p_head">Send Us a Message</h2>
-      <input class="c_input" id="name_data" type="name" placeholder="Name" />
-      <input class="c_input" id="phone_data" placeholder="Phone Number" />
-      <input class="c_input" id="email_data" type="email" placeholder="Email" />
+      <input class="c_input" id="name_data" type="name" placeholder="Name" required />
+      <input class="c_input" id="phone_data" placeholder="Phone Number" required />
+      <input class="c_input" id="email_data" type="email" placeholder="Email" required />
       <textarea class="c_input" id="message_data" type="Message" placeholder="* Message...."></textarea>
       <button class="btn-contact">Submit</button>
     </div>
@@ -80,6 +93,7 @@
       <p>© 2024 Coyote Den. All rights reserved.</p>
     </div>
     <script src="contact_script.js"></script>
+    <script src="script.js"></script>
   </footer>
 </body>
 

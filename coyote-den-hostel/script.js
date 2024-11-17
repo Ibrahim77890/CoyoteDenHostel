@@ -161,10 +161,98 @@ function getContrastingColor(hexColor) {
     const r = parseInt(hexColor.substring(1, 3), 16);
     const g = parseInt(hexColor.substring(3, 5), 16);
     const b = parseInt(hexColor.substring(5, 7), 16);
-    
+
     // Calculate the luminance
     const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-    
+
     // Return black for light colors and white for dark colors
     return luminance > 0.5 ? "#000000" : "#FFFFFF";
+}
+
+
+/**
+ * Increases the font size of all elements on the page by 1 pixel.
+ * 
+ * This function selects all elements on the page, retrieves their current font size,
+ * and increments it by 1 pixel to make the text larger.
+ */
+
+function increaseFontSize() {
+    // Select all elements on the page
+    const allElements = document.querySelectorAll("*");
+
+    // Loop through each element
+    allElements.forEach(element => {
+        // Get the computed style of the current element
+        const style = window.getComputedStyle(element);
+        const fontSize = style.fontSize;
+
+        // Check if the element has a font size and is not zero
+        if (fontSize) {
+            // Convert the font size to a number and increase it
+            const currentSize = parseFloat(fontSize);
+            element.style.fontSize = `${currentSize + 1}px`; // Increase font size by 2px
+        }
+    });
+}
+
+function decreaseFontSize() {
+    // Select all elements on the page
+    const allElements = document.querySelectorAll("*");
+
+    // Loop through each element
+    allElements.forEach(element => {
+        // Get the computed style of the current element
+        const style = window.getComputedStyle(element);
+        const fontSize = style.fontSize;
+
+        // Check if the element has a font size and is not zero
+        if (fontSize) {
+            // Convert the font size to a number and decrease it
+            const currentSize = parseFloat(fontSize);
+            element.style.fontSize = `${currentSize - 1}px`; // decrease font size by 2px
+        }
+    });
+}
+
+
+/**
+ * Toggles dark mode on and off based on the state of a checkbox.
+ * 
+ * When dark mode is enabled, it inverts the background colors of all elements
+ * to create a dark theme. When dark mode is disabled, it resets the colors to their
+ * original state.
+ * 
+ * @param {HTMLInputElement} checkbox - The checkbox element that triggers the dark mode toggle.
+ */
+
+function toggleDarkMode(checkbox) {
+    const allElements = document.querySelectorAll("*");
+
+    if (checkbox.checked) {
+        // Turn on dark mode
+        allElements.forEach(element => {
+            const style = window.getComputedStyle(element);
+            const backgroundColor = style.backgroundColor;
+
+            if (backgroundColor && backgroundColor.startsWith("rgb")) {
+                const rgb = backgroundColor.match(/\d+/g).map(Number);
+                const brightness = Math.sqrt(
+                    0.299 * rgb[0] ** 2 + 0.587 * rgb[1] ** 2 + 0.114 * rgb[2] ** 2
+                );
+
+                if (brightness > 200) {
+                    const invertedColor = `rgb(${255 - rgb[0]}, ${255 - rgb[1]}, ${255 - rgb[2]})`;
+                    element.style.backgroundColor = invertedColor;
+                    element.style.color = backgroundColor;
+                }
+            }
+        });
+    } else {
+        // Turn off dark mode (reset to original colors)
+        allElements.forEach(element => {
+            element.style.backgroundColor = "";
+            element.style.color = "";
+        });
+    }
 }
